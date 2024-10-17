@@ -11,6 +11,23 @@
   </head>
 
   <body>
+    <% if customer_signed_in? %>
+      <%= link_to customer_path(current_customer) %>
+      <%= link_to items_path %>
+      <%= link_to cart_items_path %>
+      <%= link_to destroy_customer_session_path, method: :delete %>
+    <% elsif admin_signed_in? %>
+      <%= link_to admin_items_path %>
+      <%= link_to admin_customers_path %>
+      <%= link_to admin_orders_path %>
+      <%= link_to admin_genres_path %>
+      <%= link_to destroy_admin_session_path, method: :delete %>
+    <% else %>
+      <%= link_to about_path %>
+      <%= link_to items_path %>
+      <%= link_to new_customer_registration_path %>
+      <%= link_to new_customer_session_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

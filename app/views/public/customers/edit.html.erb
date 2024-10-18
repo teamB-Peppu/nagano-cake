@@ -1,43 +1,45 @@
-      <h3>会員情報編集</h3>
-        <table class="table-borderless">
-          <tr>
-            <td>氏名</td>
-            <td><%= f.text_field :first_name %></td>
-            <td><%= f.text_field :last_name %></td>
-          </tr>
-          
-          <tr>
-            <td>フリガナ</td>
-            <td><%= f.text_field :first_name_kana %></td>
-            <td><%= f.text_field :last_name_kana %></td>
-          </tr>
-          
-          <tr>
-            <td>郵便番号</td>
-            <td><%= f.text_field :postal_code %></td>
-            <td></td>
-          </tr>
-          
-          <tr>
-            <td>住所</td>
-            <td><%= f.text_field :address %></td>
-            <td></td>
-          </tr>
-          
-          <tr>
-            <td>電話番号</td>
-            <td><%= f.text_field :phone_namber %></td>
-            <td></td>
-          </tr>
-          
-          <tr>
-            <td>メールアドレス</td>
-            <td><%= f.text_field :email %></td>
-            <td></td>
-          </tr>
-          
-          <td></td>
-          <td><%= f.submit "編集内容を保存", class:"btn btn-success" %></td>
-          <td><%= link_to "退会する", customer_unsubscribe_path, class:"btn btn-danger" %></td>
-        </table>
-      </div>
+<h2>編集</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :name, "氏名" %><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_kana, "フリガナ" %><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postal_code, "郵便番号" %>
+    <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+  </div>
+  
+  <div class="field customer-address">
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone_number,"電話番号（ハイフンなし）" %>
+    <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "変更内容を保存" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "退会する" %>
+  </div>
+  
+  
+<% end %>

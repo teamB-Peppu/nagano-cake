@@ -1,1 +1,12 @@
-
+<div class="container">
+  <div class="row">
+    <div class="col-">
+      <%= image %>
+    </div>
+    
+    
+    <div class="col-">
+      <%= f.label :amount, "個数選択" %>
+      <%= f.select :amount, 1..10 %>
+      <%= f.submit "カートに入れる" class: "btn btn-primary" %>
+    </div>

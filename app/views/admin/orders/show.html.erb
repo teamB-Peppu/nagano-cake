@@ -1,2 +1,40 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h2>注文履歴詳細</h2>
+
+<h4>購入者</h4>
+<h4>注文日</h4>
+<h4>配送先</h4>
+<h4>支払方法</h4>
+<h4>注文ステータス</h4>
+
+<% @orders.each do |orders| %>
+
+<%= link_to admin_customer_path(@customer.id) do %>
+  <%= order.name %>
+<% end %>
+<%= order.created_at %>
+<%= order.postal_code %>
+<%= order.address %>
+<%= order.payment_method %>
+<%= order.status %>
+
+<% end %>
+
+<h4>商品名</h4>
+<h4>単価（税込）</h4>
+<h4>数量</h4>
+<h4>小計</h4>
+<h4>製作ステータス</h4>
+
+<%= @order.name %>
+<%= @item.add_tax_sales_price.to_s(:dalimited) %>
+<%= @order_detail.amount %>
+<%= @order_detail.price %>
+<%= @order_detail.status %>
+
+
+<h4>商品合計</h4>
+<%= @order.sum_of_order_price %>
+<h4>送料</h4>
+<%= @order.shipping_cost %>
+<h4>請求金額合計</h4>
+<%= @order.total_payment %>

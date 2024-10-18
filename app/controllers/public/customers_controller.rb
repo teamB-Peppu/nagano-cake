@@ -7,10 +7,5 @@ class Public::CustomersController < ApplicationController
 
   def unsubscribe
   end
-<<<<<<< HEAD
 
-  def withdraw
-  end
-=======
->>>>>>> develop
 end

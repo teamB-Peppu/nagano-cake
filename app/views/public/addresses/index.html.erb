@@ -1,2 +1,44 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+  <p>配送先登録/一覧</p>
+
+  <%= form_for(Address.new) do |f| %>
+    <%= render "devise/shared/error_messages", resource: f.object %>
+    
+    <div class="field">
+      <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+    </div>
+
+    <div class="field customer-address">
+      <%= f.label :address, "住所" %>
+      <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+    </div>
+    
+    <div>
+      <%= f.label :name, "宛名" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+    
+    <div>
+      <%= f.submit "新規登録"%>
+    </div>
+  <% end %>
+  
+  <table>
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+    </tr>
+    <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.postal_code %></td>
+      <td><%= address.address %></td>
+      <td><%= address.name %></td>
+      <td>
+        <%= link_to "編集する", edit_public_address_path(address),method: :get %>
+        <%= link_to "削除する", public_address_path(address), method: :delete %>
+      </td>
+    </tr>
+    <% end %>
+  </table>

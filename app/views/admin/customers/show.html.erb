@@ -1,8 +1,8 @@
-<h2><%= @customer.name%>さんの会員詳細</h2>
+<h4><%= @customer.name%>さんの会員詳細</h4>
 <div id="user-info">
     <p><strong>会員id</strong> <%= @customer.id %></p>
-    <p><strong>氏名</strong> <%= @customer.last_name %><%= @customer.first_name %></p>
-    <p><strong>フリガナ</strong> <%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
+    <p><strong>氏名</strong> <%= @customer.name %></p>
+    <p><strong>フリガナ</strong> <%= @customer.name_kana %></p>
     <p><strong>郵便番号</strong> <%= @customer.postal_code %></p>
     <p><strong>住所</strong> <%= @customer.address %></p>
     <p><strong>電話番号</strong> <%= @customer.telephone_number %></p>

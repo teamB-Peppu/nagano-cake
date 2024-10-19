@@ -24,5 +24,20 @@ class Customer < ApplicationRecord
   def name
     "#{last_name} #{first_name}"
   end
-
+  
+  def name_kana
+  "#{last_name_kana} #{first_name_kana}"
+  end
+  def customer_status
+    if is_active == true
+      "有効"
+    else
+      "退会"
+    end
+  end
+  
+  def active_for_authentication?
+    super && (is_active == true)
+  end
+  
 end

@@ -11,4 +11,6 @@ class Item < ApplicationRecord
     (self.sales_price * 1.10).round
   end
 
+  enum status: { on_sale: 0, off_sale: 1 }
+
 end

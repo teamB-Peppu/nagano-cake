@@ -1,4 +1,4 @@
-　<h2>商品新規登録</h2>
+  <h2>商品新規登録</h2>
 <%= form_with model: @item, url:admin_items_path do |f| %>
   <h4>商品画像</h4>
   <%= f.file_field :item_image, accept: "image/*" %>
@@ -10,5 +10,15 @@
   <h4>税抜価格</h4>
   <%= f.text_field :price %>円
   <h4>販売ステータス</h4>
+  <div class="custom-control custom-radio custom-control-inline">
+      <%= f.radio_button :status, 'on_sale', checked: @item.status == 'on_sale', class: 'custom-control-input', id: 'status-on-sale' %>
+      <%= f.label :status, '販売中', class: 'custom-control-label', for: 'status-on-sale' %>
+  </div>
+  <div class="custom-control custom-radio custom-control-inline">
+      <%= f.radio_button :status, 'off_sale', checked: @item.status == 'off_sale', class: 'custom-control-input', id: 'status-off-sale' %>
+      <%= f.label :status, '販売停止中', class: 'custom-control-label', for: 'status-off-sale' %>
+  </div>
+
+
   <%= f.submit '新規登録' %>
 <% end %>

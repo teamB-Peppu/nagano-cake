@@ -1,7 +1,7 @@
 class Admin::CustomersController < ApplicationController
     
 def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page]).per(10)
 end
 
 def show
@@ -15,7 +15,7 @@ end
 def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to admin_customer_path(@customer.id), notice: "You have updated customer successfully."
+      redirect_to admin_customer_path(@customer.id), notice: "You have updated customer info successfully."
     else
       render :edit
     end

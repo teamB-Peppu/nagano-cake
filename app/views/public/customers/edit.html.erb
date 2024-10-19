@@ -1,10 +1,9 @@
-<h2>編集</h2>
+<h2>会員情報編集</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for @customer do |f| %>
 
   <div class="field">
-    <%= f.label :name, "氏名" %><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    氏名<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
     <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
   </div>
 
@@ -18,7 +17,7 @@
     <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
   </div>
   
-  <div class="field customer-address">
+  <div class="field">
     <%= f.label :address, "住所" %>
     <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
   </div>
@@ -33,13 +32,11 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "変更内容を保存" %>
+  <div>
+  <%= f.submit "変更内容を保存" %>
   </div>
   
-  <div class="actions">
-    <%= f.submit "退会する" %>
-  </div>
+  <%= button_tag "退会する" %>
   
   
 <% end %>

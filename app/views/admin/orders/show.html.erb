@@ -1,23 +1,15 @@
 <h2>注文履歴詳細</h2>
 
 <h4>購入者</h4>
-<h4>注文日</h4>
-<h4>配送先</h4>
-<h4>支払方法</h4>
-<h4>注文ステータス</h4>
-
-<% @orders.each do |orders| %>
-
 <%= link_to admin_customer_path(@customer.id) do %>
-  <%= order.name %>
+  <%= @order.name %>
 <% end %>
-<%= order.created_at %>
-<%= order.postal_code %>
-<%= order.address %>
-<%= order.payment_method %>
-<%= order.status %>
-
-<% end %>
+<h4>注文日</h4> <%= @order.created_at %>
+<h4>配送先</h4> <%= @order.postal_code %><%= @order.address %>
+<h4>支払方法</h4> <%= @order.payment_method %>
+<h4>注文ステータス</h4>
+<%= f.collection_select :status, Order.all, :status, :status, {prompt: "入金待ち"}, class: 'form-control', id: 'genre-select' %>
+<%= f.submit '更新' %>
 
 <h4>商品名</h4>
 <h4>単価（税込）</h4>
@@ -29,7 +21,8 @@
 <%= @item.add_tax_sales_price.to_s(:dalimited) %>
 <%= @order_detail.amount %>
 <%= @order_detail.price %>
-<%= @order_detail.status %>
+<%= f.collection_select :making_status, Order_detail.all, :making_status, :making_status, {prompt: "着手不可"}, class: 'form-control', id: 'genre-select' %>
+<%= f.submit '更新' %>
 
 
 <h4>商品合計</h4>

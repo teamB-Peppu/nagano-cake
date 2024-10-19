@@ -7,6 +7,12 @@ class Admin::OrdersController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def update
+    @order = Order.find(params[:id])
+    @order_details = Order_detail.find(params[:id])
+    @item = Item.find(params[:id])
+  end
+
   private
 
   def order_params

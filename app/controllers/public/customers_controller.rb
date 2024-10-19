@@ -1,17 +1,33 @@
 class Public::CustomersController < ApplicationController
+  
   def show
+    @customer = Customer.find_by(id: params[:id])
   end
 
   def edit
+    @customer = Customer.find(params[:id])
+  end
+  
+  def update
+    @customer = Customer.find_by(id: params[:id])
+    if @customer.id == current_customer.id
+       @customer.update(customer_params)
+       redirect_to customer_path
+    else
+      render :edit
+    end
   end
 
   def unsubscribe
   end
-
-  protected
   
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :name, :last_name, :first_name, :kana_last, :kana_first, :postal_code, :address, :telephone_number])
+  
+  private
+  
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email)
   end
+
+  
 
 end

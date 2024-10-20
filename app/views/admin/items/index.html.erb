@@ -8,12 +8,12 @@
 
 <% @items.each do |item| %>
 
-<%= item.item.id %>
-<%= link_to admin_item_path(@item.id) do %>
+<%= item.id %>
+<%= link_to admin_item_path(@items.ids) do %>
   <%= item.name %>
 <% end %>
 <%= item.price %>
-<%= item.genre_id %>
-<%= item.is_active %>
+<%= item.genre.name %>
+<%= item.sales_status %>
 
 <% end %>

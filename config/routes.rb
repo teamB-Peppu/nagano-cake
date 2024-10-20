@@ -9,9 +9,15 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :items, only: [:index, :show]
-    resources :orders, only: [:new, :index, :show, :confirm, :thanks, :create]
-    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
-    get "/" => "homes#top"
+    post "customers/confirm" => "customers#confirm"
+    get "customers/thanks" => "customers#thanks"
+    resources :orders, only: [:new, :index, :show, :create]
+    get "customers/unsubscribe" => "customers#unsubscribe"
+    resource :customers, only: [:show]
+    get "customers/information/edit" => "customers#edit"
+    patch "customers/information" => "customers#update"
+    patch "customers/withdraw" => "customers#withdraw"
+    root to: "homes#top"
     get "/about" => "homes#about", as: "about"
     resources :cart_items, only: [:index, :update, :destroy, :create] do
     delete :destroy_all, on: :collection

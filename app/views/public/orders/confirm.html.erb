@@ -1,45 +1,51 @@
-<div "container">
-  <div class='row mb-3'>
-    <h3>注文情報確認</h3>
-  </div>
-  <div class='row'>
-    <table>
-      <thead>
-        <tr>
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @cart_items.each do |cart_item| %>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>注文情報入力</h3>
+      <%= form_with model: @, method: :post, local: true do |f| %>
+      <div class="form-group">
+        <h5>支払方法</h5>
+        <div class="form-check">
+          <%= f.radio_button :payment_method, 'credit_card', checked: @customer.payment_method == 'credit_card', class: 'custom-control-input', id: 'payment-method-credit-card' %>
+          <%= f.label :payment_method, 'クレジットカード', class: 'custom-control-label', for: 'payment-method-credit-card' %>
+        </div>
+        <div class="form-check">
+          <%= f.radio_button :payment_method, 'bank_transfer', checked: @customer.payment_method == 'bank_transfer', class: 'custom-control-input', id: 'payment-method-bank-transfer' %>
+          <%= f.label :payment_method, '銀行振込', class: 'custom-control-label', for: 'payment-method-bank-transfer' %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <h5>お届け先</h5>
+        <div class="form-check">
+          <%= f.radio_button :delivery_address, 'your_address', checked: @customer.delivery_address == 'your_address', class: 'custom-control-input', id: 'delivery-address-your-address' %>
+          <%= f.label :delivery_address, 'ご自身の住所', class: 'custom-control-label', for: 'delivery-address-your-address' %>
+        </div>
+        <div class="form-check">
+          <%= f.radio_button :delivery_address, 'registered_address', checked: @customer.delivery_address == 'registered_address', class: 'custom-control-input', id: 'delivery-address-registered-address' %>
+          <%= f.label :delivery_address, '登録住所', class: 'custom-control-label', for: 'delivery-address-registered-address' %>
+        </div>
+        <div class="form-check">
+          <%= f.radio_button :delivery_address, 'new_address', checked: @customer.delivery_address == 'new_address', class: 'custom-control-input', id: 'delivery-address-new-address' %>
+          <%= f.label :delivery_address, '新しいお届け先', class: 'custom-control-label', for: 'delivery-address-new-address' %>
+        </div>
+        <table>
           <tr>
-            <td><%= image_tag %> <%= cart_item.item.name %></td>
-            <td><%= cart_item.item.add_tax_sales_price %></td>
-            <td><%= cart_item.amount %></td>
-            <% @total += cart_item.subtoatl %>
-            <td><%= cart_item.subtotal %></td>
+            <th><%= f.label :'郵便番号(ハイフンなし)' %></th>
+            <td><%= f.text_field :%></td>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div calss="col-4">
-    <table class="table">
-      <tr>
-        <td>送料</td>
-        <td>800</td>
-      </tr>
-      <tr>
-        <td>商品合計</td>
-        <td><%= @total %></td>
-      </tr>
-      <tr>
-        <td>請求金額</td>
-        <td><%= @total + 800 %></td>
-      </tr>
-    </table>
+          <tr>
+            <th><%= f.label :'住所' %></th>
+            <td><%= f.text_field :%></td>
+          </tr>
+          <tr>
+            <th><%= f.label :'宛名' %></th>
+            <td><%= f.text_field :%></td>
+          </tr>
+        </table>
+      </div>
+      <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>
-

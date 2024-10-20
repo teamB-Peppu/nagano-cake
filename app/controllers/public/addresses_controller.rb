@@ -2,9 +2,13 @@ class Public::AddressesController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @addresses = current_customer.addresses
-    @customers = Customer.all
-  	@address = Address.new
+    @current_customer = current_customer
+    if @current_customer.nil?
+      redirect_to login_path, alert: "ログインしていません"
+    else
+      @addresses = @current_customer.addresses
+      @address = Address.new
+    end
   end
 
   def create
@@ -41,6 +45,11 @@ class Public::AddressesController < ApplicationController
 
   def address_params
     params.require(:address).permit(:postal_code, :address, :name)
+  end
+  
+  def correct_customer
+    @customer = Customer.find(params[:id])
+    redirect_to customer_path(current_customer.id) unless @customer == current_customer
   end
 
 end

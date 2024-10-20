@@ -3,7 +3,11 @@
   <h2>マイページ</h2>
 
   <p>登録情報</p>
-  <%= link_to "編集する", edit_customer_path %>
+  <div>
+    <% if current_customer == @customer %>
+      <%= link_to "編集する", edit_customer_path %>
+    <% end %>
+  </div>
 
   <div>
     <table>

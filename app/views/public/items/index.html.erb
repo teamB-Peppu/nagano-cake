@@ -4,10 +4,10 @@
   <% @items.each do |item| %>
   <div>
     <%= link_to public_item_path(item.id) do %>
-      <%= attachment_image_tag item, :image, size: "170x170" %>
+      image
    <% end %>
-    <p><%= item.item_name %></p>
-    <p>¥<%= (item.unit_price_without_tax*1.1).floor %></p>
+    <%= item.name %>
+    <%= item.price %>
   </div>
   <% end %>
 </div>

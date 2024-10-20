@@ -1,23 +1,29 @@
-<h4>会員一覧</h4>
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th></th>
-      <th><strong>会員id</strong></th>
-      <th><strong>氏名</strong></th>
-      <th><strong>メールアドレス</strong></th>
-      <th><strong>ステータス</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.id %>
-        </td>
-        <td><%= link_to customer.name, admin_customer_path(customer) %></td>
-        <td><%= customer.email %></td>
-        <td><%= customer.customer_status %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">  
+    <div class="col">
+      <h4 class="font-weight-bold ml-5">会員一覧</h4>
+      <table class='table table-hover mx-auto w-75'>
+        <thead class="bg-secondary ">
+          <tr>
+            <th class="font-weight-bold", style="width:100px">会員ID</th>
+            <th class="font-weight-bold under"><u>氏名</u></th>
+            <th class="font-weight-bold">メールアドレス</th>
+            <th class="font-weight-bold">ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %>
+              </td>
+              <td><%= link_to customer.name, admin_customer_path(customer) %></td>
+              <td><%= customer.email %></td>
+              <td><%= customer.customer_status %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @customers %>
+      </div>
+    </div>  
+  </div>  

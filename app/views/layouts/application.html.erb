@@ -12,7 +12,7 @@
 
   <body>
     <% if customer_signed_in? %>
-      <%= link_to customer_path(current_customer) %>
+      <%= link_to customers_path %>
       <%= link_to items_path %>
       <%= link_to cart_items_path %>
       <%= link_to destroy_customer_session_path, method: :delete %>

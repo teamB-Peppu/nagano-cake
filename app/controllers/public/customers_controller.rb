@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = Customer.find_by(id: params[:id])
+    @customer = current_customer
   end
 
   def create
@@ -15,20 +15,27 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def update
-    @customer = Customer.find_by(id: params[:id])
-    if @customer.id == current_customer.id
-       @customer.update(customer_params)
-       redirect_to customer_path
+    @customer = current_customer
+    if @customer.update(customer_params)
+       redirect_to customers_path
     else
       render :edit
     end
   end
 
   def unsubscribe
+    @customer = current_customer
+  end
+  
+  def withdraw
+    @customer = current_customer
+    @customer.update(is_active: true)
+    reset_session
+    redirect_to root_path
   end
 
 

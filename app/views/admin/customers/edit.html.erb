@@ -1,43 +1,57 @@
-<h2><%= @customer.name%>の会員情報編集</h2>
-
-<%= form_with model: @customer,local:true do |f| %>
-
-  <p><strong>会員id</strong> <%= @customer.last_name %></p>
-  
-  <div class="form-group">
-    <%= f.label :name, "氏名" %>
-    <%= f.text_field :last_name, class: 'form-control last_name' %>
-    <%= f.text_field :first_name, class: 'form-control first_name' %> 
-  </div>
-  <div class="form-group">
-    <%= f.label :name_kana, "フリガナ" %>
-    <%= f.text_field :last_name_kana, class: 'form-control last_name_kana' %>
-    <%= f.text_field :first_name_kana, class: 'form-control first_name_kana' %> 
-  </div>
-  <div class="form-group">
-    <%= f.label :postal_code,"郵便番号" %>
-    <%= f.number_field :postal_code, class: 'form-control postal_code' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :address,"住所" %>
-    <%= f.text_field :address, class: 'form-control address' %>
-    </div>
-    <div class="form-group">
-    <%= f.label :telephone_number,"電話番号" %>
-    <%= f.number_field :telephone_number, class: 'form-control telephone_number' %>
-  　</div>
-    <div class="form-group">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.text_field :email, class: 'form-control email' %>
- 　  </div>
- 　  <div class ="custom-control custom-radio custom-control-inlinel">
-   　<%= f.radio_button :is_active, true %>
-     <%= f.label :is_active,"有効" %>
-    </div>
-     <div class ="custom-control custom-radio custom-control-inlinel"> 
-     <%= f.radio_button :is_active, false %>
-     <%= f.label :is_active,"退会" %>
-    </div> 
-   <%= f.submit "変更を保存", class: "btn btn-primary" %>
- 
-<% end %>
+<div class="container">
+    <div class="row">
+        <div class="col">
+          <h4><%= @customer.name%>の会員情報編集</h4>
+          <table>
+              <%= form_with model: @customer,local:true do |f| %>
+              <tr>
+                <td>会員ID</td>
+                <td><%= @customer.last_name %></td>
+                  
+              </tr>
+              <tr>
+                <td class="font-weight-bold">氏名 </td>
+                <td>
+                  <%= f.text_field :last_name, class: 'form-control last_name' %>
+                  <%= f.text_field :first_name, class: 'form-control first_name' %> 
+                </td>
+              </tr>
+              <tr>
+                  <td class="font-weight-bold">フリガナ </td>
+                  <td>
+                    <%= f.text_field :last_name_kana, class: 'form-control last_name_kana' %>
+                    <%= f.text_field :first_name_kana, class: 'form-control first_name_kana' %> 
+                  </td>
+              </tr>
+              <tr>
+                  <td class="font-weight-bold">郵便番号 </td>
+                  <td><%= f.number_field :postal_code, class: 'form-control postal_code' %></td>
+              </tr>
+              <tr>
+                <td class="font-weight-bold">住所 </td>
+                <td><%= f.text_field :address, class: 'form-control address' %></td>  
+              </tr>
+              <tr>
+                <td class="font-weight-bold">電話番号 </td>
+                <td><%= f.number_field :telephone_number, class: 'form-control telephone_number' %></td>
+              </tr>
+              <tr>
+                <td class="font-weight-bold">メールアドレス </td>
+                <td><%= f.text_field :email, class: 'form-control email' %></td>
+              </tr>
+              <tr>
+                <td class="font-weight-bold">会員ステータス </td>
+                <td class ="custom-control custom-radio custom-control-inlinel">
+                 　<%= f.radio_button :is_active, true %>
+                   <%= f.label :is_active,"有効" %>
+                </td>   
+                <td class ="custom-control custom-radio custom-control-inlinel"> 
+                  <%= f.radio_button :is_active, false %>
+                  <%= f.label :is_active,"退会" %>
+                </td>
+              </tr>
+              <tr>
+                <%= f.submit "変更を保存", class: "btn btn-primary" %>
+              </tr>
+              <% end %>
+          </table>

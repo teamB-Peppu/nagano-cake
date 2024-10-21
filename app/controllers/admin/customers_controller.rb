@@ -15,7 +15,7 @@ end
 def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to admin_customer_path(@customer.id), notice: "You have updated customer info successfully."
+      redirect_to admin_customer_path(@customer), notice: "You have updated customer info successfully."
     else
       render :edit
     end

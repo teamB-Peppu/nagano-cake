@@ -1,7 +1,6 @@
 class Admin::HomesController < ApplicationController
   def top
-    @order = Order.find(params[:id])
-    @order_detail = Order_detail.find(params[:id])
+    @orders = Order.includes(:order_details).page(params[:page]).per(10)
   end
 
   private

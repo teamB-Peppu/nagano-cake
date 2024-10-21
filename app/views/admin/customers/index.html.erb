@@ -2,7 +2,7 @@
   <div class="row">  
     <div class="col">
       <h4 class="font-weight-bold ml-5">会員一覧</h4>
-      <table class='table table-hover mx-auto w-75'>
+      <table class='table table-hover mx-auto my-5 w-75'>
         <thead class="bg-secondary ">
           <tr>
             <th class="font-weight-bold", style="width:100px">会員ID</th>
@@ -18,7 +18,7 @@
               </td>
               <td><%= link_to customer.name, admin_customer_path(customer) %></td>
               <td><%= customer.email %></td>
-              <td><%= customer.customer_status %></td>
+              <td class="<%= customer.is_active? ? 'text-success font-weight-bold' : 'text-muted font-weight-bold' %>"><%= customer.customer_status %></td>
             </tr>
           <% end %>
         </tbody>

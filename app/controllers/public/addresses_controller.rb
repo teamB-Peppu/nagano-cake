@@ -8,12 +8,13 @@ class Public::AddressesController < ApplicationController
     else
       @addresses = @current_customer.addresses
       @address = Address.new
+      @customers = Customer.where.not(id: @current_customer.id)
     end
   end
 
   def create
     @address = current_customer.addresses.build(address_params)
-  
+
     if @address.save
       redirect_to addresses_path
     else
@@ -46,7 +47,7 @@ class Public::AddressesController < ApplicationController
   def address_params
     params.require(:address).permit(:postal_code, :address, :name)
   end
-  
+
   def correct_customer
     @customer = Customer.find(params[:id])
     redirect_to customer_path(current_customer.id) unless @customer == current_customer

@@ -3,11 +3,11 @@
 <div>
   <% @items.each do |item| %>
   <div>
-    <%= link_to public_item_path(item.id) do %>
+    <%= link_to item_path(item.id) do %>
       image
    <% end %>
     <%= item.name %>
-    <%= item.price %>
+    ¥<%= (item.price * 1.1).floor %>
   </div>
   <% end %>
 </div>

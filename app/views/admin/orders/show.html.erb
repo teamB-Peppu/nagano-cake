@@ -1,33 +1,76 @@
-<h2>注文履歴詳細</h2>
-
-<h4>購入者</h4>
-<%= link_to admin_customer_path(@customer.id) do %>
-  <%= @order.name %>
-<% end %>
-<h4>注文日</h4> <%= @order.created_at %>
-<h4>配送先</h4> <%= @order.postal_code %><%= @order.address %>
-<h4>支払方法</h4> <%= @order.payment_method %>
-<h4>注文ステータス</h4>
-<%= f.collection_select :status, Order.all, :status, :status, {prompt: "入金待ち"}, class: 'form-control', id: 'genre-select' %>
-<%= f.submit '更新' %>
-
-<h4>商品名</h4>
-<h4>単価（税込）</h4>
-<h4>数量</h4>
-<h4>小計</h4>
-<h4>製作ステータス</h4>
-
-<%= @order.name %>
-<%= @item.add_tax_sales_price.to_s(:dalimited) %>
-<%= @order_detail.amount %>
-<%= @order_detail.price %>
-<%= f.collection_select :making_status, Order_detail.all, :making_status, :making_status, {prompt: "着手不可"}, class: 'form-control', id: 'genre-select' %>
-<%= f.submit '更新' %>
-
-
-<h4>商品合計</h4>
-<%= @order.sum_of_order_price %>
-<h4>送料</h4>
-<%= @order.shipping_cost %>
-<h4>請求金額合計</h4>
-<%= @order.total_payment %>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4>注文履歴詳細</h4>
+            <%= form_with model: @order do|f|%> 
+            <table>
+                <tr>    
+                    <td class="font-weight-bold">購入者</td>
+                    <td><%= link_to @order.name, admin_customer_path(@customer.id) %></td>
+                </tr>
+                <tr>
+                     <td class="font-weight-bold">注文日</td>
+                     <td><%= @order.created_at %></td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">配送先</td>
+                    <td><%= @order.postal_code %><%= @order.address %></td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">支払方法</td>
+                    <td><%= @order.payment_method %></td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">注文ステータス</td>
+                    <td><%= f.collection_select :status, Order.all, :status, :status, {prompt: "入金待ち"}, class: 'form-control', id: 'genre-select' %></td>
+                    <td><%= f.submit '更新' %></td>
+                </tr>
+            </table> 
+            <table>
+                <thead>
+                    <tr>
+                        <th class="font-weight-bold">商品名</th>
+                        <th class="font-weight-bold">単価（税込）</th>
+                        <th class="font-weight-bold">数量</th>
+                        <th class="font-weight-bold">小計</th>
+                        <th class="font-weight-bold">製作ステータス</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @order.order_details.each do |order_detail| %>
+                    <tr>
+                        <td><%= order_detail.item.name %></td>
+                        <td><%= order_detail.add_tax_sales_price.to_s(:dalimited) %></td>
+                        <td><%= order_detail.amount %></td>
+                        <td><%= order_detail.price %></td>
+                        <td><%= f.collection_select :making_status, Order_detail.all, :making_status, :making_status, {prompt: "着手不可"}, class: 'form-control', id: 'genre-select' %></td>
+                        <td><%= f.submit '更新' %></td>
+                    </tr>
+                </tbody>
+            </table>    
+            <table>
+                <tr>
+                    <td class="font-weight-bold">商品合計</td>
+                    <td> <%= @order.sum_of_order_price %></td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">送料</td>
+                    <td><%= @order.shipping_cost %></td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">請求金額合計</td>
+                    <td><%= @order.total_payment %></td>
+                </tr>
+            </table>    
+                
+                
+                
+               
+                
+                
+               
+                
+                
+                
+                

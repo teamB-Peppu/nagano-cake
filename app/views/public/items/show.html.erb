@@ -1,15 +1,24 @@
-<div class="container">
-  <div class="row">
-    <div class="col-">
-      <%= image %>
-      <%= items.name %>
-      <%= items.introduction %>
-      ¥<%= (item.unit_price_without_tax*1.1).floor %>（税込）
+<div>
+  <div>
+    <div>
+      image
+      <%= @item.name %>
+      <%= @item.introduction %>
+      ¥<%= (@item.price * 1.1).floor %>（税込）
     </div>
     
+    <% if flash[:error].present? %>
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
     
-    <div class="col-">
-      <%= f.label :amount, "個数選択" %>
-      <%= f.select :amount, 1..10 %>
-      <%= f.submit "カートに入れる" %>
+    <div>
+      <%= form_with(model: @item_new, url: add_to_cart_path, local: true) do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.select :amount, 1..10, {prompt: "個数選択　　"} %>
+        <%= f.submit "カートに入れる" %>
+      <% end %>
     </div>
+  </div>
+</div>

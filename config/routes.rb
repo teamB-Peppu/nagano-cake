@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :items, only: [:index, :show]
+    post 'items/:id/add_to_cart', to: 'items#add_to_cart', as: 'add_to_cart'
     post "customers/confirm" => "customers#confirm"
     get "customers/thanks" => "customers#thanks"
     resources :orders, only: [:new, :index, :show, :create]

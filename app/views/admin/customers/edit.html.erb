@@ -2,19 +2,17 @@
     <div class="row">
         <div class="col">
           <h4><%= @customer.name%>の会員情報編集</h4>
+          <%= form_with model: @customer,url: admin_customer_path(@customer),local:true do |f| %>
           <table>
-              <%= form_with model: @customer,local:true do |f| %>
               <tr>
                 <td>会員ID</td>
-                <td><%= @customer.last_name %></td>
+                <td><%= @customer.id %></td>
                   
               </tr>
               <tr>
                 <td class="font-weight-bold">氏名 </td>
-                <td>
-                  <%= f.text_field :last_name, class: 'form-control last_name' %>
-                  <%= f.text_field :first_name, class: 'form-control first_name' %> 
-                </td>
+                <td><%= f.text_field :last_name, class: 'form-control last_name' %></td>
+                <td><%= f.text_field :first_name, class: 'form-control first_name' %></td>
               </tr>
               <tr>
                   <td class="font-weight-bold">フリガナ </td>
@@ -41,17 +39,17 @@
               </tr>
               <tr>
                 <td class="font-weight-bold">会員ステータス </td>
-                <td class ="custom-control custom-radio custom-control-inlinel">
-                 　<%= f.radio_button :is_active, true %>
-                   <%= f.label :is_active,"有効" %>
+                <td class ="custom-control custom-radio custom-control-inline">
+                 　<%= f.radio_button :is_active, true, checked: @customer.is_active == true, class: 'custom-control-input', id: 'status-active' %>
+                   <%= f.label :is_active,'有効', class: 'custom-control-label', for: 'status-active' %>
                 </td>   
-                <td class ="custom-control custom-radio custom-control-inlinel"> 
-                  <%= f.radio_button :is_active, false %>
-                  <%= f.label :is_active,"退会" %>
+                <td class ="custom-control custom-radio custom-control-inline"> 
+                 <%= f.radio_button :is_active, false, checked: @customer.is_active == false, class: 'custom-control-input', id: 'status-deleted' %>
+                  <%= f.label :is_active,'退会', class: 'custom-control-label', for: 'status-deleted' %>
                 </td>
               </tr>
               <tr>
-                <%= f.submit "変更を保存", class: "btn btn-primary" %>
+                <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
               </tr>
-              <% end %>
           </table>
+          <% end %>

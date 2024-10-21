@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col">
             <h4><%= @customer.name%>さんの会員詳細</h4>
-            <table class="table borderline-none"> 
+            <table class="table table-borderless my-5 w-75"> 
                 <tr>
                     <td class="font-weight-bold">会員id </td>
                     <td><%= @customer.id %></td>
@@ -29,16 +29,16 @@
                 </tr>
                 <tr>
                     <td class="font-weight-bold">メールアドレス </td>
-                    <td><%= @xustomer.email %></td>
+                    <td><%= @customer.email %></td>
                 </tr>  
                 <tr>
                      <td class="font-weight-bold">会員ステータス </td>
-                     <td><%= @customer.is_active %></td>
+                     <td class="<%= @customer.is_active? ? 'text-success font-weight-bold' : 'text-muted font-weight-bold' %> "><%= @customer.customer_status %></td>
                 </tr> 
                 <tr>
                     <td></td>
-                    <td><%= link_to "編集する", edit_admin_customer_path(@cusotomer.id), class: "button-primary"%></td>
-                    <td> <%= link_to "注文履歴一覧を見る", admin_admin_path, class: "button-primary"%></td>
+                    <td><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success"%></td>
+                    <td> <%= link_to "注文履歴一覧を見る", admin_admin_path, class: "btn btn-primary"%></td>
                 </tr>
             </table>
         </div>

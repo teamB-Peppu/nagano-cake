@@ -1,10 +1,10 @@
   ja:
     enums:
       item:
-        status:
+        is_active:
           on_sale: "販売中"
           off_sale: "販売停止中"
-  
+
   activerecord:
     errors:
       messages:
@@ -12,7 +12,7 @@
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-          
+
   ja:
     enums:
       order:
@@ -27,7 +27,7 @@
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-          
+
   ja:
     enums:
       item:
@@ -35,7 +35,7 @@
           my_address: "ご自身の住所"
           address: "登録住所"
           new_address: "新しいお届け先"
-  
+
   activerecord:
     errors:
       messages:
@@ -43,7 +43,7 @@
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-          
+
   date:
     abbr_day_names:
     - 日

@@ -7,9 +7,19 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-  scope module: :public do
+scope module: :public do
     resources :items, only: [:index, :show]
-
+    post 'items/:id/add_to_cart', to: 'items#add_to_cart', as: 'add_to_cart'
+    post "customers/confirm" => "customers#confirm"
+    post "orders/confirm" => "orders#confirm"
+    get "orders/thanks" => "orders#thanks"
+    resources :orders, only: [:new, :index, :show, :create]
+    get "customers/unsubscribe" => "customers#unsubscribe"
+    resource :customers, only: [:show]
+    get "customers/information/edit" => "customers#edit"
+    patch "customers/information" => "customers#update"
+    patch "customers/withdraw" => "customers#withdraw"
+    root to: "homes#top"
     get "/about" => "homes#about", as: "about"
     resources :cart_items, only: [:index, :update, :destroy, :create] do
     delete :destroy_all, on: :collection

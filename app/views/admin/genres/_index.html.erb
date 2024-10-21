@@ -9,9 +9,9 @@
         <% genres.each do|genre|%>
         <tr>
             <td class="align-middle"><%= genre.name %></td>
-            <td class=<%= @customer.is_active? ? 'text-success font-weight-bold' : 'text-muted font-weight-bold'><%= link_to "編集する", edit_admin_genre_path(genre.id),class: "btn btn-success w-75"%> </td>
+            <td> <%= link_to "編集する", edit_admin_genre_path(genre.id),class: "btn btn-success w-75"%> </td>
         </tr>
-        <% end %> 
+        <% end %>
     </tbody>
-    
+
 </table>

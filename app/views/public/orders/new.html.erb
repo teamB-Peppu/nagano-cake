@@ -18,17 +18,19 @@
       <div>
         <h5>お届け先</h5>
         <div class="custom-control custom-radio custom-control-inline">
-          <%= f.radio_button :delivery_address, 'my_address', checked: @order.address == 'my_address' %>
-          <%= f.label :delivery_address, 'ご自身の住所' %>
+          <%= f.radio_button :delivery_address, 0, checked: true %>
+          <label>ご自身の住所</label>
         </div>
         <div class="custom-control custom-radio custom-control-inline">
-          <%= f.radio_button :delivery_address, 'address', checked: @order.address == 'address' %>
-          <%= f.label :delivery_address, '登録住所' %>
+          〒<%= current_customer.postal_code %><%= current_customer.address %><br>
+          <%= current_customer.last_name %><%= current_customer.first_name %>
         </div>
         <div class="custom-control custom-radio custom-control-inline">
-          <%= f.radio_button :delivery_address, 'new_address', checked: @order.address == 'new_address' %>
-          <%= f.label :delivery_address, '新しいお届け先' %>
+          <%= f.radio_button :delivery_address, 1 %>
+          <label>登録済住所から選択</label>
         </div>
+          <%= f.radio_button :delivery_address, 2 %>
+          <label>新しいお届け先</label>
         <table>
           <tr>
             <th><%= f.label :'郵便番号(ハイフンなし)' %></th>

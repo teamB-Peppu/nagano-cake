@@ -2,28 +2,28 @@
 
   <div class="text-center">
 <%= form_with model: @item, url: admin_items_path do |f| %>
-  <div>商品画像
+  <div class="form-group">商品画像
   <%= f.file_field :item_image, accept: "image/*" %></div>
-  <div>商品名
+  <div class="form-group">商品名
   <%= f.text_field :name %></div>
-  <div>商品説明
+  <div class="form-group">商品説明
   <%= f.text_area :introduction %></div>
-  <div>ジャンル
+  <div class="form-group">ジャンル
   <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "選択してください"}, class: 'form-control', id: 'genre-select' %></div>
-  <div>税抜価格
+  <div class="form-group">税抜価格
   <%= f.text_field :price %>円</div>
-  <div>販売ステータス
+  <div class="form-group">販売ステータス
   <div class="custom-control custom-radio custom-control-inline">
-      <%= f.radio_button :status, 'on_sale', checked: @item.status == 'on_sale', class: 'custom-control-input', id: 'status-on-sale' %>
-      <%= f.label :status, '販売中', class: 'custom-control-label', for: 'status-on-sale' %>
+      <%= f.radio_button :is_active, :true %>
+      <%= f.label :is_active, '販売中', for: 'is_active-on-sale' %>
   </div>
   <div class="custom-control custom-radio custom-control-inline">
-      <%= f.radio_button :status, 'off_sale', checked: @item.status == 'off_sale', class: 'custom-control-input', id: 'status-off-sale' %>
-      <%= f.label :status, '販売停止中', class: 'custom-control-label', for: 'status-off-sale' %>
+      <%= f.radio_button :is_active, :false %>
+      <%= f.label :is_active, '販売停止中', for: 'is_active-off-sale' %>
   </div>
   </div>
 
-  <p><%= f.submit '新規登録',class: "btn btn-success btn-sm btn-block" %></p>
+  <div class="form-group"><%= f.submit '新規登録',class: "btn btn-success" %></div>
 <% end %>
 
   </div>

@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
-  
+
   def index
     @items = Item.all
     @quantity = Item.count
@@ -9,10 +9,10 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
   end
-  
+
   def add_to_cart
     @item = Item.find(params[:item_id])
-    if params[:amount].blank? 
+    if params[:amount].blank?
       flash[:error] = "個数を選択してください"
       redirect_to @item
       return
@@ -25,5 +25,5 @@ class Public::ItemsController < ApplicationController
     end
     redirect_to cart_items_path
   end
-  
+
 end

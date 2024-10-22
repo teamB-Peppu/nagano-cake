@@ -1,6 +1,6 @@
 
             <h4>注文履歴詳細</h4>
-            <%= form_with model: @order, url: admin_order_path(@order.id) do|f|%>
+            <%= form_with model: @order, url: admin_order_path(@order.id) do |f|%>
             <table>
                 <tr>
                     <td class="font-weight-bold">購入者</td>
@@ -24,6 +24,7 @@
                     <td><%= f.submit '更新' %></td>
                 </tr>
             </table>
+            <% end %>
             <table>
                 <thead>
                     <tr>
@@ -35,7 +36,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% @order.order_details.each do |order_detail| %>
+                    <% @order_details.each do |order_detail| %>
+                    <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch do |f|%>
+                    <%= f.hidden_field :order_detail_id, value: order_detail.id %>
                     <tr>
                         <td><%= order_detail.item.name %></td>
                         <td><%= order_detail.add_tax_sales_price.to_s(:dalimited) %></td>
@@ -45,6 +48,7 @@
                         <td><%= f.submit '更新' %></td>
                     </tr>
                     <% end %>
+                <% end %>
                 </tbody>
             </table>
             <table>
@@ -61,4 +65,3 @@
                     <td><%= @order.total_payment %></td>
                 </tr>
             </table>
-            <% end %>

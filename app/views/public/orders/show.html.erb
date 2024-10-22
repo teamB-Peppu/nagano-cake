@@ -10,7 +10,11 @@
     </tr>
     <tr>
       <td>配送先</td>
-      <td><%= @order.postal_code%><%= @order.address %><%= @order.name %></td>
+      <td>
+        〒<%= @order.postal_code%>
+        <%= @order.address %>
+        <%= @order.name %>
+      </td>
     </tr>
     <tr>
       <td>支払い方法</td>
@@ -19,7 +23,7 @@
     <tr>
       <td>ステータス</td>
       <td>
-        <%= order.order_statuses_i18n.invert %>
+        <%= @order.status %>
       </td>
     </tr>
   </table>
@@ -29,34 +33,39 @@
 
 <table>
   <tr>
-    <td>商品名</td>
+    <td>商品</td>
     <td>単価(税込)</td>
     <td>個数</td>
     <td>小計</td>
   </tr>
-<% @orders.each do |order| %>
-
-<%= form_with model: order , url: orders_path(order.id) , method: :patch , local: true do |f| %>
-    <table>
-      <tr>
-        <td><%= order.item.name %></td>
-        <td><%= (order.item.price * 1.1).floor %></td>
-        <td><%= order.item.amount %></td>
-        <td><%= item.add_tax_sales_price %></td>
-      </tr>
-    </table>
-    <table>
+<table>
+  <% total_price = 0 %>
+  <% @order.order_details.each do |order_detail| %>
+    <% sub_total = order_detail.amount * order_detail.item.price %>
     <tr>
-      <td>商品合計</td>
-      <td><%= @orders.sum(&:subtotal) %></td>
+      <td><%= order_detail.item.name %></td>
+      <td><%= order_detail.item.price %></td>
+      <td><%= order_detail.amount %></td>
+      <td><%= sub_total %></td>
     </tr>
-    <tr>
-      <td>配送料</td>
-      <td>800</td>
-    </tr>
-    <tr>
-      <td>ご請求額</td>
-      <td><%= @orders.sum(&:subtotal) + 800 %></td>
-    </tr>
-  </table>
-<% end %>
+    <% total_price += sub_total %>
+  <% end %>
+  <tr>
+    <td>商品合計</td>
+    <td></td>
+    <td></td>
+    <td><%= total_price %></td>
+  </tr>
+  <tr>
+    <td>配送料</td>
+    <td></td>
+    <td></td>
+    <td>800</td>
+  </tr>
+  <tr>
+    <td>ご請求額</td>
+    <td></td>
+    <td></td>
+    <td><%= total_price + 800 %></td>
+  </tr>
+</table>

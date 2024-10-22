@@ -52,9 +52,13 @@ class Public::OrdersController < ApplicationController
   def index
     @customer = current_customer
     @orders = @customer.orders
+    @order = Order.find_by(id: params[:id])
+    @orders = current_customer.orders
   end
 
   def show
+    @customer = current_customer
+    @orders = @customer.orders
     @order = Order.find_by(id: params[:id])
     unless @order
       redirect_to root_path

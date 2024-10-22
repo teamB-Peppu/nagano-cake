@@ -28,6 +28,7 @@
         <div class="custom-control custom-radio custom-control-inline">
           <%= f.radio_button :delivery_address, 1 %>
           <label>登録済住所から選択</label>
+          <%= f.select :registered_address_id, current_customer.addresses.all.map { |m| [[m.postal_code, m.address, m.name].join(" "), m.id] } ,include_blank: "登録してある配送先住所から選択" %>
         </div>
           <%= f.radio_button :delivery_address, 2 %>
           <label>新しいお届け先</label>

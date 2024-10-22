@@ -1,6 +1,6 @@
 class Admin::HomesController < ApplicationController
   def top
-    @orders = Order.includes(:order_details).page(params[:page]).per(10)
+    @orders = Order.page(params[:page]).per(10)
   end
 
   private
@@ -10,7 +10,7 @@ class Admin::HomesController < ApplicationController
   end
 
   def order_detail_params
-    params.require(:order_detail).permit(:amount)
+    params.require(:order_detail).permit(:name, :status, :amount)
   end
 
 end

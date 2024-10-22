@@ -1,12 +1,10 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
+
             <h4>注文履歴詳細</h4>
-            <%= form_with model: @order do|f|%> 
+            <%= form_with model: @order, url: admin_order_path(@order.id) do|f|%>
             <table>
-                <tr>    
+                <tr>
                     <td class="font-weight-bold">購入者</td>
-                    <td><%= link_to @order.name, admin_customer_path(@customer.id) %></td>
+                    <td><%= link_to @order.name, admin_customer_path(@order.id) %></td>
                 </tr>
                 <tr>
                      <td class="font-weight-bold">注文日</td>
@@ -22,10 +20,10 @@
                 </tr>
                 <tr>
                     <td class="font-weight-bold">注文ステータス</td>
-                    <td><%= f.collection_select :status, Order.all, :status, :status, {prompt: "入金待ち"}, class: 'form-control', id: 'genre-select' %></td>
+                    <td><%= f.select :status, Order.statuses.keys %></td>
                     <td><%= f.submit '更新' %></td>
                 </tr>
-            </table> 
+            </table>
             <table>
                 <thead>
                     <tr>
@@ -34,7 +32,6 @@
                         <th class="font-weight-bold">数量</th>
                         <th class="font-weight-bold">小計</th>
                         <th class="font-weight-bold">製作ステータス</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,11 +41,12 @@
                         <td><%= order_detail.add_tax_sales_price.to_s(:dalimited) %></td>
                         <td><%= order_detail.amount %></td>
                         <td><%= order_detail.price %></td>
-                        <td><%= f.collection_select :making_status, Order_detail.all, :making_status, :making_status, {prompt: "着手不可"}, class: 'form-control', id: 'genre-select' %></td>
+                        <td><%= f.select :making_status, OrderDetail.making_statuses.keys %></td>
                         <td><%= f.submit '更新' %></td>
                     </tr>
+                    <% end %>
                 </tbody>
-            </table>    
+            </table>
             <table>
                 <tr>
                     <td class="font-weight-bold">商品合計</td>
@@ -62,15 +60,5 @@
                     <td class="font-weight-bold">請求金額合計</td>
                     <td><%= @order.total_payment %></td>
                 </tr>
-            </table>    
-                
-                
-                
-               
-                
-                
-               
-                
-                
-                
-                
+            </table>
+            <% end %>

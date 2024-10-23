@@ -1,13 +1,10 @@
-<h2>商品一覧（全<%= @quantity %>件）</h2>
-
+<h2>商品一覧（全<%= @items.count %>件）</h2>
 <div>
   <% @items.each do |item| %>
-  <div>
     <%= link_to item_path(item.id) do %>
       image
-   <% end %>
+    <% end %>
     <%= item.name %>
     ¥<%= (item.price * 1.1).floor %>
-  </div>
   <% end %>
 </div>

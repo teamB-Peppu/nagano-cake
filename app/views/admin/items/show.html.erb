@@ -1,6 +1,9 @@
-<h4 class="font-weight-bold my-4">商品詳細</h4>
-
 <div class="container">
+  <div class="row">
+    <div class="col-mg-2">
+      <h4 class="font-weight-bold my-4 bg-light">商品詳細</h4>
+    </div>
+  </div>
   <div class="row">
 
     <div class="col-lg-4">
@@ -8,11 +11,29 @@
     </div>
 
     <div class="col-lg-8">
-　　　<div>商品名 <%= @item.name %></div>
-　　　<div>商品説明 <%= @item.introduction %></div>
-　　　<div>ジャンル <%= @item.genre.name %></div>
-　　　<div>税込価格(税抜価格) <%= (@item.price * 1.1).floor %> (<%= @item.price %>)円</div>
-　　　<div>販売ステータス <%= @item.is_active ? '販売中' : '販売停止中' %></div>
+
+      <table>
+        <tr>
+　　　    <td>商品名</td>
+　　　    <td><%= @item.name %></td>
+　　　  </tr>
+　　　  <tr>
+　　　    <td>商品説明</td>
+　　　    <td><%= @item.introduction %></td>
+　　　  </tr>
+　　　  <tr>
+　　　    <td>ジャンル</td>
+　　　    <td><%= @item.genre.name %></td>
+　　　  </tr>
+　　　  <tr>
+　　　    <td>税込価格(税抜価格)</td>
+　　　    <td><%= (@item.price * 1.1).floor %> (<%= @item.price %>)円</td>
+　　　  </tr>
+　　　  <tr>
+　　　    <td class="font-weight-bold">販売ステータス</td>
+　　　    <td class="<%= @item.is_active? ? 'text-success font-weight-bold' : 'text-muted font-weight-bold' %> "><%= @item.status %></td>
+　　　  </tr>
+　　　</table>
 
 　　</div>
   </div>

@@ -1,1 +1,23 @@
 @use '~bootstrap/scss/bootstrap';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px; /* リンクの間にスペースを作る */
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 1px solid #ccc; /* ボーダーを追加 */
+  border-radius: 4px; /* 角を丸める */
+}
+
+.pagination a:hover {
+  background-color: #f0f0f0; /* ホバー時の背景色 */
+}

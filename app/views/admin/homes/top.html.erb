@@ -1,10 +1,14 @@
 <div class="container">
   <div class="row">
+    <div class="col-mg-2">
+      <h4 class="font-weight-bold my-4 bg-light">注文履歴一覧</h4>
+    </div>
+  </div>
+  <div class="row">
     <div class="col">
-      <h4 class="font-weight-bold my-4">注文履歴一覧</h4>
-      <table class="table table-hover mx-auto">
+      <table class='table mx-auto my-5 w-75'>
         <thead>
-          <tr class="bg-secondary">
+          <tr class="bg-light">
             <th class="font-weight-bold">購入日時</th>
             <th class="font-weight-bold">購入者</th>
             <th class="font-weight-bold">注文個数</th>
@@ -28,7 +32,7 @@
         </tbody>
         <% end %>
       </table>
-      <%= paginate @orders %>
+      <%= paginate @orders, class: "pagination" %>
      </div>
     </div>
   </div>

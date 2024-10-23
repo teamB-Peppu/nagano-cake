@@ -1,11 +1,21 @@
 <div class="container">
   <div class="row">
+    <div class="col-mg-2">
+      <h4 class="font-weight-bold my-4 bg-light">商品一覧</h4>
+    </div>
+    <div class="col-mg-8">
+      <%= link_to new_admin_item_path do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col">
-      <h4 class="font-weight-bold my-4">商品一覧</h4>
 
       <table class='table mx-auto my-5 w-75'>
         <thead>
-          <tr class="bg-secondary">
+          <tr class="bg-light">
             <th>商品ID</th>
             <th>商品名</th>
             <th>税抜価格</th>
@@ -24,14 +34,14 @@
                 <% end %></td>
             <td><%= item.price %></td>
             <td><%= item.genre.name %></td>
-            <td><%= item.is_active ? '販売中' : '販売停止中' %></td>
+            <td class="<%= item.is_active ? 'text-success font-weight-bold' : 'text-muted font-weight-bold' %>"><%= item.status %></td>
           </tr>
         </tbody>
 
         <% end %>
 
       </table>
-      <%= paginate @items %>
+      <%= paginate @items, class: "pagination" %>
     </div>
   </div>
 </div>

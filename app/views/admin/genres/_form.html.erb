@@ -1,13 +1,13 @@
-<div class="from-items mb-5 mt-5">
+<div class="from-items mb-5 mt-5 w-100">
 <% if genre.new_record? %>
   <%= form_with model: genre,url: admin_genres_path, local:true do |f| %>
     <div class="form-inline">
       <div class="form-group">
         <%= f.label :name, "ジャンル名", class:"font-weight-bold mr-4" %>
-        <%= f.text_field :name, class: 'form-control genre_name ml-4 mr-4' %>
+        <%= f.text_field :name, class: 'form-control genre_name ml-4 mr-4 ' %>
       </div>
       <div class="form-group">
-        <%= f.submit genre.new_record? ? "新規投稿" : "変更を保存", class: "btn btn-success ml-4" %>
+        <%= f.submit genre.new_record? ? "新規登録" : "変更を保存", class: "btn btn-success font-weight-bold ml-4 " %>
       </div>
      <% end %> 
     </div> 
@@ -19,7 +19,7 @@
         <%= f.text_field :name, class: 'form-control genre_name ml-4 mr-4' %>
       </div>
       <div class="form-group">
-        <%= f.submit genre.new_record? ? "新規投稿" : "変更を保存", class: "btn btn-success ml-4" %>
+        <%= f.submit genre.new_record? ? "新規登録" : "変更を保存", class: "btn btn-success font-weight-bold ml-4" %>
       </div>  
      <% end %> 
     </div>  

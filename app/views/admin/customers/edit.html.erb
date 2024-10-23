@@ -3,23 +3,20 @@
         <div class="col">
           <h4><%= @customer.name%>の会員情報編集</h4>
           <%= form_with model: @customer,url: admin_customer_path(@customer),local:true do |f| %>
-          <table>
-              <tr>
-                <td>会員ID</td>
+          <table class="table table-borderless table-sm w-75">
+              <tr >
+                <td class="font-weight-bold">会員ID</td>
                 <td><%= @customer.id %></td>
-                  
               </tr>
               <tr>
                 <td class="font-weight-bold">氏名 </td>
                 <td><%= f.text_field :last_name, class: 'form-control last_name' %></td>
                 <td><%= f.text_field :first_name, class: 'form-control first_name' %></td>
               </tr>
-              <tr>
+              <tr >
                   <td class="font-weight-bold">フリガナ </td>
-                  <td>
-                    <%= f.text_field :last_name_kana, class: 'form-control last_name_kana' %>
-                    <%= f.text_field :first_name_kana, class: 'form-control first_name_kana' %> 
-                  </td>
+                  <td><%= f.text_field :last_name_kana, class: 'form-control last_name_kana' %></td>
+                  <td><%= f.text_field :first_name_kana, class: 'form-control first_name_kana' %> </td>
               </tr>
               <tr>
                   <td class="font-weight-bold">郵便番号 </td>
@@ -49,6 +46,7 @@
                 </td>
               </tr>
               <tr>
+                <td></td>
                 <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
               </tr>
           </table>

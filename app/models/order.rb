@@ -7,7 +7,7 @@ class Order < ApplicationRecord
 
   has_one_attached :image
 
-  enum payment_method: { credit_card: 0, transfer: 1 }
+  enum payment_method: { クレジットカード: 0, 銀行振込: 1 }
   enum delivery_address: { my_address: 0, address: 1, new_address: 2 }
 
   def sum_of_order_price

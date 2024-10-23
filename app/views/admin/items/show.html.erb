@@ -1,4 +1,4 @@
-<h2>商品詳細</h2>
+<h4 class="font-weight-bold my-4">商品詳細</h4>
 
 <div class="container">
   <div class="row">
@@ -8,15 +8,16 @@
     </div>
 
     <div class="col-lg-8">
+　　　<div>商品名 <%= @item.name %></div>
+　　　<div>商品説明 <%= @item.introduction %></div>
+　　　<div>ジャンル <%= @item.genre.name %></div>
+　　　<div>税込価格(税抜価格) <%= (@item.price * 1.1).floor %> (<%= @item.price %>)円</div>
+　　　<div>販売ステータス <%= @item.is_active ? '販売中' : '販売停止中' %></div>
 
-<h4>商品名</h4> <%= @item.name %>
-<h4>商品説明</h4> <%= @item.introduction %>
-<h4>ジャンル</h4> <%= @item.genre.name %>
-<h4>税込価格(税抜価格)</h4> <%= (@item.price * 1.1).floor %> (<%= @item.price %>)円
-<h4>販売ステータス</h4> <%= @item.is_active ? '販売中' : '販売停止中' %>
-
-<div class="form-group"><%= link_to "編集する",edit_admin_item_path(@item.id),class: "btn btn-success" %></div>
-
-    </div>
+　　</div>
   </div>
 </div>
+
+　　<div class="text-center">
+　　  <%= link_to "編集する",edit_admin_item_path(@item.id),class: "btn btn-success" %>
+　　</div>

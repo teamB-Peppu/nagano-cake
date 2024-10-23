@@ -1,31 +1,37 @@
-<h2>商品一覧</h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="font-weight-bold my-4">商品一覧</h4>
 
-<table>
+      <table class='table mx-auto my-5 w-75'>
+        <thead>
+          <tr class="bg-secondary">
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
 
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
+        <% @items.each do |item| %>
 
-<% @items.each do |item| %>
+        <tbody>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to admin_item_path(item.id) do %>
+                <%= item.name %>
+                <% end %></td>
+            <td><%= item.price %></td>
+            <td><%= item.genre.name %></td>
+            <td><%= item.is_active ? '販売中' : '販売停止中' %></td>
+          </tr>
+        </tbody>
 
-  <tbody>
-    <tr>
-      <td><%= item.id %></td>
-      <td><%= link_to admin_item_path(item.id) do %>
-          <%= item.name %>
-          <% end %></td>
-      <td><%= item.price %></td>
-      <td><%= item.genre.name %></td>
-      <td><%= item.is_active ? '販売中' : '販売停止中' %></td>
-    </tr>
-  </tbody>
+        <% end %>
 
-<% end %>
-
-</table>
+      </table>
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>

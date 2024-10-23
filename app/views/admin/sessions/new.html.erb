@@ -1,20 +1,24 @@
-<h2>管理者ログイン</h2>
-
-<%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
-  <div class="field">
-    <%= f.label :email,"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password,"パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
- 
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-<%= render "admin/shared/links" %>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col ">
+           <h4 class="text-left mt-4"><strong>管理者ログイン</strong></h4>
+           <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
+          <table class="mx-auto mt-5 w-75">
+            <tr class="mx-auto">
+              <td><%= f.label :email,"メールアドレス", class: "form-label" %></td>
+              <td class="w-75 justify-content-end"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control " %></td>
+            </tr>
+            <tr class="mx-auto ">
+              <td><%= f.label :password,"パスワード", class: "form-label mt-3" %></td>
+              <td class="w-75 justify-content-end"><%= f.password_field :password, autocomplete: "current-password", class: "form-control " %></td>
+            </tr>
+            <tr class="mx-auto w-75">
+              <td></td>
+              <td><%= f.submit "ログイン", class: "btn btn-primary mt-4 w-25" %></td>
+            </tr>
+          </table>
+          <% end %>
+          <%= render "admin/shared/links" %>
+      </div>
+    </div>
+</div>

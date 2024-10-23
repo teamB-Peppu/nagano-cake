@@ -1,15 +1,15 @@
-<table class="table table-bordered table-sm w-25">
+<table style="width: 350px; border-collapse: collapse;" class="table table-bordered table-sm ">
     <thead class="bg-secondary text-center">
         <tr>
-            <th>ジャンル</th>
-            <th colspan="1"></th>
+            <th style="border: none;">ジャンル</th>
+            <th style="border: none;" colspan="2"></th>
         </tr>
     </thead>
     <tbody>
         <% genres.each do|genre|%>
         <tr>
-            <td class="align-middle"><%= genre.name %></td>
-            <td> <%= link_to "編集する", edit_admin_genre_path(genre.id),class: "btn btn-success w-75"%> </td>
+            <td style="border: none;" class="align-middle"><%= genre.name %></td>
+            <td style="border: none;"> <%= link_to "編集する", edit_admin_genre_path(genre.id),class: "btn btn-success w-75 justify-content-center"%> </td>
         </tr>
         <% end %>
     </tbody>

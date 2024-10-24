@@ -11,11 +11,13 @@ genre_render
 <h2>新着商品</h2>
 
 <div>
-  <div>
-    画像
-    <p><%= link_to "商品名", items_path %></p>
-    <p>値段</p>
-  </div>
+  <% @items.each do |item| %>
+    <%= link_to item_path(item.id) do %>
+      画像
+    <% end %>
+      <%= item.name %>
+      ¥<%= (item.price * 1.1).floor %>
+  <% end %>
 </div>
 
 <%= link_to " 全ての商品を見る", items_path %>

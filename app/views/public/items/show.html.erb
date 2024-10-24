@@ -3,28 +3,22 @@
     <div class="col-4 mt-5 text-center">
       image
     </div>
-    <div class="col-5 mt-5">
-      <h2><%= @item.name %></h2><br>
-      <h5><%= @item.introduction %></h5><br>
-     <h3>¥<%= (@item.price * 1.1).floor %>（税込）</h3>
-    
+      <%= @item.name %>
+      <%= @item.introduction %>
+     ¥<%= (@item.price * 1.1).floor %>（税込）
+
     <% if flash[:error].present? %>
       <div class="alert alert-danger">
         <%= flash[:error] %>
       </div>
     <% end %>
-    
-    <div class="row">
-      <div class="col-md-6">
-      <%= form_with(model: @item_new, url: add_to_cart_path, local: true) do |f| %>
-      <%= f.hidden_field :item_id, value: @item.id %>
-      <%= f.select :amount, 1..10, {prompt: "個数選択　　"} %>
-      </div>
-      <div class="col-md-6">
+
+        <%= form_with(model: @item_new, url: add_to_cart_path, local: true) do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.select :amount, 1..10, {prompt: "個数選択　　"} %>
+
         <%= f.submit "カートに入れる", class: "btn btn-success" %>
-      </div>
+
       <% end %>
-    </div>
-    </div>
   </div>
 </div>

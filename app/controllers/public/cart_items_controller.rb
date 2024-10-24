@@ -3,6 +3,11 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items
     @total = 0
+    if @cart_items.empty?
+      @cart_empty = true
+    else
+      @cart_empty = false
+    end
   end
 
   def create

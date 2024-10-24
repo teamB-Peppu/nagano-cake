@@ -21,3 +21,11 @@
 .pagination a:hover {
   background-color: #f0f0f0; /* ホバー時の背景色 */
 }
+
+.bg-image {
+background-image: url('../images/IMG_6427.jpg');
+height: 50vh;
+width: 60%;
+background-size: cover;
+background-position: center;
+}

@@ -7,11 +7,13 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-   @order = Order.includes(:order_details).find(params[:id])
+   @order = Order.find(params[:id])
+   @order_details = @order.order_details
     if @order.update(order_params)
-     redirect_to admin_order_path(@order.id)
+       @order_details.update_all(making_status: "waiting") if @order.status == "confirm"
+       redirect_to admin_order_path(@order.id)
     else
-     render :show
+       render :show
     end
   end
 

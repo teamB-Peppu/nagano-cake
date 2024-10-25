@@ -1,10 +1,12 @@
 <div class="container-fluid m-2">
-  <p>配送先編集</p>
+  <div class="row">
+      <p class="col-2 ml-5 bg-light">配送先編集</p>
+  </div>
 
   <div class="form-group ml-5">
     <%= form_for @address do |f| %>
       <div class="form-group row">
-        <div class="col-2 col-form-label">
+        <div class="col-3 col-form-label">
           <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
         </div>
         <div class="col">
@@ -13,7 +15,7 @@
       </div>
 
       <div class="form-group row">
-        <div class="col-2 col-form-label">
+        <div class="col-3 col-form-label">
           <%= f.label :address, "住所" %>
         </div>
         <div class="col-5">
@@ -22,7 +24,7 @@
       </div>
 
       <div class="form-group row">
-        <div class="col-2 col-form-label">
+        <div class="col-3 col-form-label">
           <%= f.label :name, "宛名" %>
         </div>
         <div class="col">

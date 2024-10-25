@@ -1,7 +1,7 @@
 ja:
   enums:
     order_detail:
-      making_statuses:
+      making_status:
         no: "着手不可"
         waiting: "製作待ち"
         production: "製作中"
@@ -20,7 +20,7 @@ ja:
         confirm: "入金確認"
         production: "製作中"
         preparation: "発送準備中"
-      　shipped: "発送済み"
+        shipped: "発送済み"
   activerecord:
     errors:
       messages:

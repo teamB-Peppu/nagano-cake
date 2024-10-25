@@ -1,19 +1,21 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-md-9">
+  <div class="row justify-content-center">
+    <div class="col-md-9 mt-5">
       <h2>商品一覧（全<%= @items.count %>件）</h2>
-      <div>
-        <div class="row mt-3">
-        <% @items.each do |item| %>
+      <div class="row mt-5">
+      <% @items.each do |item| %>
         <div class="col-md-3">
           <%= link_to item_path(item.id) do %>
-            image
+            <%= image_tag item.get_image, width: 170, height: 130 %>
           <% end %>
-          <%= item.name %>
-          ¥<%= (item.price * 1.1).floor %>
+          <div class="mb-2">
+            <%= item.name %>
+          </div>
+          <div class="mb-5">
+            ¥<%= (item.price * 1.1).floor %>
+          </div>
         </div>
-        <% end %>
-        </div>
+      <% end %>
       </div>
     </div>
   </div>

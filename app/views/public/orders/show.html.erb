@@ -44,11 +44,11 @@
     <% sub_total = order_detail.amount * order_detail.item.price %>
     <tr>
       <td><%= order_detail.item.name %></td>
-      <td><%= order_detail.item.price %></td>
+      <td><%= (order_detail.item.price * 1.1).floor %></td>
       <td><%= order_detail.amount %></td>
-      <td><%= sub_total %></td>
+      <td><%= (order_detail.item.price * 1.1).floor * order_detail.amount %></td>
     </tr>
-    <% total_price += sub_total %>
+    <% total_price +=  (order_detail.item.price * 1.1).floor * order_detail.amount %>
   <% end %>
   <tr>
     <td>商品合計</td>

@@ -1,7 +1,7 @@
 ja:
   enums:
-    order_details:
-      making_status:
+    order_detail:
+      making_statuses:
         no: "着手不可"
         waiting: "製作待ち"
         production: "製作中"

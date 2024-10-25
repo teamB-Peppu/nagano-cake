@@ -9,6 +9,7 @@ class Order < ApplicationRecord
 
   enum payment_method: { credit_card: 0, transfer: 1 }
   enum delivery_address: { my_address: 0, address: 1, new_address: 2 }
+  enum status: { waiting: 0, confirm: 1, production: 2, preparation: 3, shipped: 4 }
 
   def sum_of_order_price
     total_payment - shipping_cost
@@ -35,7 +36,5 @@ class Order < ApplicationRecord
   def amount
     order_details.sum(:amount)
   end
-
-  enum status: { waiting: 0, confirm: 1, production: 2, preparation: 3, shipped: 4 }
 
 end

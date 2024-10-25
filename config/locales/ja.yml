@@ -1,12 +1,11 @@
-  ja:
-    enums:
-      order_details:
-        making_status:
-          no: "着手不可"
-          waiting: "製作待ち"
-          production: "製作中"
-          ok: "製作完了"
-
+ja:
+  enums:
+    order_details:
+      making_status:
+        no: "着手不可"
+        waiting: "製作待ち"
+        production: "製作中"
+        ok: "製作完了"
   activerecord:
     errors:
       messages:
@@ -14,17 +13,14 @@
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-
-  ja:
-    enums:
-      order:
-        status:
-          waiting: "入金待ち"
-          confirm: "入金確認"
-          production: "製作中"
-          preparation: "発送準備中"
-        　shipped: "発送済み"
-
+  enums:
+    order:
+      status:
+        waiting: "入金待ち"
+        confirm: "入金確認"
+        production: "製作中"
+        preparation: "発送準備中"
+      　shipped: "発送済み"
   activerecord:
     errors:
       messages:
@@ -32,14 +28,11 @@
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-
-  ja:
-    enums:
-      item:
-        is_active:
-          on_sale: "販売中"
-          off_sale: "販売停止中"
-
+  enums:
+    item:
+      is_active:
+        on_sale: "販売中"
+        off_sale: "販売停止中"
   activerecord:
     errors:
       messages:
@@ -47,14 +40,11 @@
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-
-  ja:
-    enums:
-      order:
-        payment_method:
-          credit_card: "クレジットカード"
-          transfer: "銀行振込"
-
+  enums:
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
   activerecord:
     errors:
       messages:
@@ -62,23 +52,6 @@
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-
-  ja:
-    enums:
-      item:
-        status:
-          my_address: "ご自身の住所"
-          address: "登録住所"
-          new_address: "新しいお届け先"
-
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
-
   date:
     abbr_day_names:
     - 日

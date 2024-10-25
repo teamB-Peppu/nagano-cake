@@ -13,15 +13,15 @@ class Order < ApplicationRecord
   def sum_of_order_price
     total_payment - shipping_cost
   end
-  
+
   def add_tax_sales_price
     order_details.sum(:price) * 1.1
   end
-  
+
   def subtotal
     item.add_tax_sales_price * amount
   end
-  
+
   def item
     order_detail = self.order_details.first
     if order_detail
@@ -31,11 +31,11 @@ class Order < ApplicationRecord
       return nil
     end
   end
-  
+
   def amount
     order_details.sum(:amount)
   end
 
-  enum status: { 入金待ち: 0, 入金確認: 1, 製作中: 2, 発送準備中: 3, 発送済み: 4 }
+  enum status: { waiting: 0, confirm: 1, production: 2, preparation: 3, shipped: 4 }
 
 end

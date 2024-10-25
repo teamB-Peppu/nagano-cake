@@ -1,44 +1,58 @@
-<div>
-  <div>
+<div class="container-fluid m-2">
   <h2>マイページ</h2>
-
-  <p>登録情報</p>
-  <div>
-    <% if current_customer == @customer %>
-      <%= link_to "編集する", customers_information_edit_path %>
-    <% end %>
+  <div class="row align-items-end">
+    <div class="col-1 ml-5">
+      <h4>登録情報</h4>
+    </div>
+    <div class="col-2">
+      <% if current_customer == @customer %>
+        <%= link_to "編集する", customers_information_edit_path, class:"btn btn-success" %>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <table>
+  <div class="col-8 ml-3">
+    <table class="table table-bordered m-2" id="custom-table">
       <tr>
-        <td>氏名</td>
+        <td class="table-secondary col-3">氏名</td>
         <td><%= @customer.last_name %><%= @customer.first_name %></td>
       </tr>
       <tr>
-        <td>カナ</td>
+        <td class="table-secondary">カナ</td>
         <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
       </tr>
       <tr>
-        <td>郵便番号</td>
+        <td class="table-secondary">郵便番号</td>
         <td><%= @customer.postal_code %></td>
       </tr>
       <tr>
-        <td>住所</td>
+        <td class="table-secondary">住所</td>
         <td><%= @customer.address %></td>
       </tr>
       <tr>
-        <td>電話番号</td>
+        <td class="table-secondary">電話番号</td>
         <td><%= @customer.telephone_number %></td>
       </tr>
       <tr>
-        <td>メールアドレス</td>
+        <td class="table-secondary">メールアドレス</td>
         <td><%= @customer.email %></td>
       </tr>
     </table>
   </div>
-
-    <p>配送先<%= link_to "一覧を見る", addresses_path %></p>
-
-    <p>注文履歴<%= link_to "一覧を見る", orders_path %></p>
+  <div class="row align-items-end my-1">
+    <div class="col-1 ml-5">
+      <h5>配送先</h5>
+    </div>
+    <div class "col-4">
+      <%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %></p>
+    </div>
+  </div>
+  <div class="row align-items-end my-1">
+    <div class="col-1 ml-5">
+      <h5>注文履歴</h5>
+    </div>
+    <div class "col-4">
+      <%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %></p>
+    </div>
+  </div>
 </div>

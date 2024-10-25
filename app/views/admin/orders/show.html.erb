@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-mg-2">
+    <div class="col-md-2">
       <h4 class="font-weight-bold my-4 bg-light">注文履歴詳細</h4>
     </div>
   </div>
@@ -68,15 +68,15 @@
       <table>
         <tr>
           <td class="font-weight-bold">商品合計</td>
-          <td> <%= total_price %></td>
+          <td> <%= total_price %>円</td>
         </tr>
         <tr>
           <td class="font-weight-bold">送料</td>
-          <td><%= @order.shipping_cost %></td>
+          <td><%= @order.shipping_cost %>円</td>
         </tr>
         <tr>
           <td class="font-weight-bold">請求金額合計</td>
-          <td><%= total_price + @order.shipping_cost %></td>
+          <td><%= total_price + @order.shipping_cost %>円</td>
         </tr>
       </table>
 

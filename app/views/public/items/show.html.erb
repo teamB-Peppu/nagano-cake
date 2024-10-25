@@ -1,24 +1,36 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-4 mt-5 text-center">
-      image
+  <div class="row justify-content-center">
+    <div class="col-4 mt-5">
+      <%= image_tag @item.get_image, width: 300, height: 200 %>
     </div>
-      <%= @item.name %>
-      <%= @item.introduction %>
-     ¥<%= (@item.price * 1.1).floor %>（税込）
-
-    <% if flash[:error].present? %>
-      <div class="alert alert-danger">
-        <%= flash[:error] %>
-      </div>
-    <% end %>
-
+    <div class="col-4 ml-5 mt-5">
+        <div div class="col-md-6 mb-3">
+          <%= @item.name %>
+        </div>
+        <div div class="col-md-6 mb-3 ">
+          <p style="word-wrap: break-word;">
+            <%= @item.introduction %>
+          </p>
+        </div>
+        <div div class="col-md-6 mb-3 ">
+         ¥<%= (@item.price * 1.1).floor %>（税込）
+        </div>
+      <% if flash[:error].present? %>
+        <div class="alert alert-danger">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-4 mr-4 ml-3">
         <%= form_with(model: @item_new, url: add_to_cart_path, local: true) do |f| %>
         <%= f.hidden_field :item_id, value: @item.id %>
         <%= f.select :amount, 1..10, {prompt: "個数選択　　"} %>
-
+        </div>
+        <div class="col-4 ml-5">
         <%= f.submit "カートに入れる", class: "btn btn-success" %>
-
-      <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

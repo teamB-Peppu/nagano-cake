@@ -1,24 +1,32 @@
-<p>ジャンル検索</p>
-genre_render
-
-<p>
-  ようこそ、ながのCAKEへ！<br>
-  このサイトでは、ケーキ販売のECサイトになります。<br>
-  会員でない方も商品の閲覧はできますが、<br>
-  購入には会員登録が必要になります。
-</p>
-
-<h2>新着商品</h2>
-
-<div>
-  <% @items.each do |item| %>
-    <%= link_to item_path(item.id) do %>
-      画像
-    <% end %>
-      <%= item.name %>
-      ¥<%= (item.price * 1.1).floor %>
-  <% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6 mt-5 text-left">
+      <p>
+        ようこそ、ながのCAKEへ！<br>
+        このサイトでは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。
+      </p>
+    </div>
+    <div class="text-left pt-5">
+      <h4><strong>新着商品</strong></h4>
+      
+      <div class="row justify-content-center">
+        <div class="d-flex flex-wrap">
+          <% @items.each do |item| %>
+              <%= link_to item_path(item.id) do %>
+                <div class="card m-2 p-1 card-hover">
+                  <%= image_tag item.get_image, width: 200, height: 100 %>
+              <% end %>
+                <div class="card-body text-body">
+                  <p class="card-title"><%= item.name %></p>
+                  <p class="card-title">¥<%= (item.price * 1.1).floor %></p>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <p class="text-right"><%= link_to "全ての商品を見る", items_path %></p>
+    </div>
+  </div>
 </div>
-
-<%= link_to " 全ての商品を見る", items_path %>
-

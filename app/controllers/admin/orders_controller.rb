@@ -4,6 +4,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @item = Item.find(params[:id])
     @order_details = @order.order_details
+    @order_new = Order.new
   end
 
   def update

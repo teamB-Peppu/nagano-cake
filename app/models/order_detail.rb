@@ -8,7 +8,7 @@ class OrderDetail < ApplicationRecord
   end
 
   def subtotal
-    return price * amount
+    return add_tax_sales_price * amount
   end
 
   enum making_status: { no: 0, waiting: 1, production: 2, ok: 3 }

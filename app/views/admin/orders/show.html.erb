@@ -22,7 +22,7 @@
         </tr>
         <tr>
           <td class="font-weight-bold">支払方法</td>
-          <td><%= @order.payment_method %></td>
+          <td><%= @order.payment_method_i18n %></td>
         </tr>
         <tr>
           <td class="font-weight-bold">注文ステータス</td>
@@ -46,17 +46,19 @@
           </tr>
         </thead>
         <tbody>
+          <% total_price = 0 %>
           <% @order_details.each do |order_detail| %>
           <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch do |f|%>
           <%= f.hidden_field :order_detail_id, value: order_detail.id %>
           <tr>
             <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.add_tax_sales_price.to_s(:dalimited) %></td>
+            <td><%= (order_detail.item.price * 1.1).floor %></td>
             <td><%= order_detail.amount %></td>
-            <td><%= order_detail.price %></td>
+            <td><%= (order_detail.item.price * 1.1).floor * order_detail.amount %></td>
             <td><%= f.select :making_status, OrderDetail.making_statuses.keys %></td>
             <td><%= f.submit '更新',class: "btn btn-success" %></td>
           </tr>
+              <% total_price +=  (order_detail.item.price * 1.1).floor * order_detail.amount %>
           <% end %>
           <% end %>
         </tbody>
@@ -66,7 +68,7 @@
       <table>
         <tr>
           <td class="font-weight-bold">商品合計</td>
-          <td> <%= @order.sum_of_order_price %></td>
+          <td> <%= total_price %></td>
         </tr>
         <tr>
           <td class="font-weight-bold">送料</td>
@@ -74,7 +76,7 @@
         </tr>
         <tr>
           <td class="font-weight-bold">請求金額合計</td>
-          <td><%= @order.total_payment %></td>
+          <td><%= total_price + @order.shipping_cost %></td>
         </tr>
       </table>
 

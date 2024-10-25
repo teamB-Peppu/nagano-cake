@@ -15,12 +15,14 @@
         <%= order.address %>
         <%= order.name %>
       </td>
+      <% total_price = 0 %>
       <% order.order_details.each do |order_detail| %>
         <td>
           <%= order_detail.item.name %>
         </td>
+         <% total_price +=  (order_detail.item.price * 1.1).floor * order_detail.amount %>
       <% end %>
-      <td><%= order.order_details.sum(&:subtotal) + 800 %></td>
+      <td><%= total_price + 800 %></td>
       <td><%= order.status %></td>
       <td><%= link_to "表示する", order_path(order) %></td>
     </tr>

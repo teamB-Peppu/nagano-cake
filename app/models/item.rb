@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :genre
 
   has_one_attached :image
-  
+
   def get_image
     (image.attached?) ? image : 'no_image.jpg'
   end
@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   def add_tax_sales_price
     (self.price * 1.10).round
   end
-  
+
   def status
     if is_active == true
       "販売中"
@@ -22,9 +22,13 @@ class Item < ApplicationRecord
       "販売停止中"
     end
   end
-  
+
   def active_for_authentication?
     super && (is_active == true)
+  end
+
+  def with_tax_price
+    (price * 1.1).round # 例: 税率10%で計算
   end
 
 end

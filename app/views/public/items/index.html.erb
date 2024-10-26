@@ -1,5 +1,6 @@
+<%= render 'genre' %>
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row">
     <div class="col-md-9 mt-5">
       <h2>商品一覧（全<%= @items.count %>件）</h2>
       <div class="row mt-5">
@@ -18,5 +19,8 @@
       <% end %>
       </div>
     </div>
+  </div>
+  <div class="row justify-content-center pr-5 mr-5">
+    <%= paginate @items %>
   </div>
 </div>

@@ -1,0 +1,58 @@
+<div class="container-fluid m-2">
+  <h2>マイページ</h2>
+  <div class="row align-items-end">
+    <div class="col-2 ml-5">
+      <h4>登録情報</h4>
+    </div>
+    <div class="col-2">
+      <% if current_customer == @customer %>
+        <%= link_to "編集する", customers_information_edit_path, class:"btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-8 ml-3">
+    <table class="table table-bordered m-2" id="custom-table">
+      <tr>
+        <td class="table-secondary col-3">氏名</td>
+        <td><%= @customer.last_name %><%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary">カナ</td>
+        <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary">郵便番号</td>
+        <td><%= @customer.postal_code %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary">住所</td>
+        <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary">電話番号</td>
+        <td><%= @customer.telephone_number %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary">メールアドレス</td>
+        <td><%= @customer.email %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row align-items-end my-1">
+    <div class="col-2 ml-5">
+      <h4>配送先</h4>
+    </div>
+    <div class "col-4">
+      <%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %></p>
+    </div>
+  </div>
+  <div class="row align-items-end my-1">
+    <div class="col-2 ml-5">
+      <h4>注文履歴</h4>
+    </div>
+    <div class "col-4">
+      <%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %></p>
+    </div>
+  </div>
+</div>

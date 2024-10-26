@@ -1,0 +1,38 @@
+<%= render 'genre_sidebar' %>
+<div class="container mt-5 ml-0">
+  <div class="row justify-content-center mx-auto pt-5 bg-image2 w-75 h-50">
+    <div class="text-left">
+      <div class="row justify-content-center offset-md-1 mb-5 pt-5">
+        <p class="">
+          <strong>
+          ようこそ、ながのCAKEへ！<br>
+          このサイトでは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+          </strong>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row ml-5 pl-4">
+    <div class="text-left pt-5">
+      <h4 class="ml-5"><strong>新着商品</strong></h4>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="d-flex flex-wrap text-left">
+      <% @items.each do |item| %>
+          <%= link_to item_path(item.id) do %>
+            <div class="card m-2 p-1 card-hover">
+              <%= image_tag item.get_image, width: 200, height: 100 %>
+          <% end %>
+            <div class="card-body text-body">
+              <p class="card-title"><%= item.name %></p>
+              <p class="card-title">¥<%= (item.price * 1.1).floor %></p>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <p class="text-right mr-5"><%= link_to "全ての商品を見る", items_path %></p>
+</div>

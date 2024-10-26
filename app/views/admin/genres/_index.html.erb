@@ -1,0 +1,17 @@
+<table style="width: 350px; border-collapse: collapse;" class="table table-bordered table-sm ">
+    <thead class="bg-light text-center">
+        <tr>
+            <th style="border: none;">ジャンル</th>
+            <th style="border: none;" colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% genres.each do|genre|%>
+        <tr>
+            <td style="border: none;" class="align-middle"><%= genre.name %></td>
+            <td class="d-flex justify-content-center" style="border: none;"> <%= link_to "編集する", edit_admin_genre_path(genre.id),class: "btn btn-success w-75 "%> </td>
+        </tr>
+        <% end %>
+    </tbody>
+
+</table>

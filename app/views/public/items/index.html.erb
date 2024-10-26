@@ -1,0 +1,26 @@
+<%= render 'genre' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mt-5">
+      <h2>商品一覧（全<%= @items.count %>件）</h2>
+      <div class="row mt-5">
+      <% @items.each do |item| %>
+        <div class="col-md-3">
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image, width: 170, height: 130 %>
+          <% end %>
+          <div class="mb-2">
+            <%= item.name %>
+          </div>
+          <div class="mb-5">
+            ¥<%= (item.price * 1.1).floor %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center pr-5 mr-5">
+    <%= paginate @items %>
+  </div>
+</div>

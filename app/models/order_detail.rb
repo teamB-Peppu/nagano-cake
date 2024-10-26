@@ -11,7 +11,7 @@ class OrderDetail < ApplicationRecord
     return add_tax_sales_price * amount
   end
 
-  enum making_status: { no: 0, waiting: 1, production: 2, ok: 3 }
+  enum making_status: { aa: 0, waiting: 1, production: 2, ok: 3 }
 
 
 end

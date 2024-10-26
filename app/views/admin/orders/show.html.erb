@@ -18,7 +18,7 @@
         </tr>
         <tr>
           <td class="font-weight-bold">配送先</td>
-          <td><%= @order.postal_code %><%= @order.address %><%= @order.name %></td>
+          <td>〒<%= @order.postal_code %><%= @order.address %><%= @order.name %></td>
         </tr>
         <tr>
           <td class="font-weight-bold">支払方法</td>
@@ -26,7 +26,7 @@
         </tr>
         <tr>
           <td class="font-weight-bold">注文ステータス</td>
-          <td><%= f.select :status, Order.statuses.keys %></td>
+          <td><%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %></td>
           <td><%= f.submit '更新',class: "btn btn-success" %></td>
         </tr>
       </table>
@@ -55,7 +55,7 @@
             <td><%= (order_detail.item.price * 1.1).floor %></td>
             <td><%= order_detail.amount %></td>
             <td><%= (order_detail.item.price * 1.1).floor * order_detail.amount %></td>
-            <td><%= f.select :making_status, OrderDetail.making_statuses.keys %></td>
+            <td><%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %></td>
             <td><%= f.submit '更新',class: "btn btn-success" %></td>
           </tr>
               <% total_price +=  (order_detail.item.price * 1.1).floor * order_detail.amount %>

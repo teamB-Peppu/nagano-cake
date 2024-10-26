@@ -23,9 +23,11 @@
 }
 
 .bg-image {
-background-image: url('../images/IMG_6427.jpg');
-height: 50vh;
-width: 60%;
-background-size: cover;
-background-position: center;
+  background-image: url('../images/IMG_6427.jpg');
+  height: 50vh;
+  width: 60%;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+  display: block;
 }

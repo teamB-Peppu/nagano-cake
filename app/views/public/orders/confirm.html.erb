@@ -18,6 +18,7 @@
         <tbody>
           <% @total = 0 %>
           <% @cart_items.each do |cart_item| %>
+            <% @total += cart_item.subtotal %>
             <tr>
               <td><%= image_tag cart_item.item.get_image, width: 80, height: 50 %><%= cart_item.item.name %></td>
               <td><%= cart_item.item.add_tax_sales_price %></td>

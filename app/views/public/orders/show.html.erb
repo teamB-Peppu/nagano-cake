@@ -45,20 +45,19 @@
               </thead>
               <tbody>
                 <% total_price = 0 %>
+                <tr>
                 <% @order.order_details.each do |order_detail| %>
                   <% sub_total = order_detail.amount * order_detail.item.price %>
-                  <tr>
-                    <td><%= order_detail.item.name %></td>
-                    <td><%= (order_detail.item.price * 1.1).floor %></td>
-                    <td><%= order_detail.amount %></td>
-                    <td><%= (order_detail.item.price * 1.1).floor * order_detail.amount %></td>
-                  </tr>
-                  </tbody>
+                  <td><%= order_detail.item.name %></td>
+                  <td><%= (order_detail.item.price * 1.1).floor %></td>
+                  <td><%= order_detail.amount %></td>
+                  <td><%= (order_detail.item.price * 1.1).floor * order_detail.amount %></td>
                   <% total_price +=  (order_detail.item.price * 1.1).floor * order_detail.amount %>
-                  </table>
+                </tr>
                 <% end %>
+              </tbody>
+            </table>
           </div>
-        
         <div class="col-lg-4">
           <strong>請求情報</strong>
             <table class="table table-hover table-bordered mt-2">
